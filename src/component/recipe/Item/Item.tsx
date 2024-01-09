@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import classnames from 'classnames';
-import { useDispatch } from 'react-redux';
-import { setSelectedRecipe } from '../../../features/recipe/recipeSlice';
+import RecipeContext from '../../../context/RecipeContext';
+// import { useDispatch } from 'react-redux';
+// import { setSelectedRecipe } from '../../../features/recipe/recipeSlice';
 
-const Item = ({item, index}) => {  
-  const isSingleView = index === undefined;
+const Item = ({item, index} : any) => {   
   const isEven = index%2 === 0;
-  const dispatch = useDispatch();
-  const viewRecipe = (item) => {
-      dispatch(setSelectedRecipe(item))
+  // const dispatch = useDispatch();
+  const recipeContext = useContext(RecipeContext);
+  const viewRecipe = (item: any) => {
+      // dispatch(setSelectedRecipe(item))
+      debugger;
+      recipeContext.setSelected(item)
   }
   
   return (  

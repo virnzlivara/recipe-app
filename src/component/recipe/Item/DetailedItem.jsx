@@ -1,10 +1,14 @@
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import classnames from 'classnames';
 import './DetailedItem.css'; 
+import { useContext } from 'react';
+import SpecialContext from '../../../context/SpecialContext';
 const DetailedItem = ({item}) => { 
-  const specials = useSelector(state => state.special)
-  console.log("Specials", specials)
+    debugger;
+//   const specials = useSelector(state => state.special)
+    const specialContext = useContext(SpecialContext)
+//   console.log("Specials", specials)
   return (  
     <div className='m-5'>
         <div className={classnames({
@@ -12,7 +16,7 @@ const DetailedItem = ({item}) => {
         "gap-5 mb-5": true
         })}>
             <div className='recipe-image w-1/3'> 
-            <img src={item.images.full} width={500} height={500} alt="recipe"/> 
+            <img src={item.images?.full} width={500} height={500} alt="recipe"/> 
             </div>
             <div className='w-2/3 grid'>
             <div>
@@ -64,7 +68,7 @@ const DetailedItem = ({item}) => {
                                    
                                     <ul className={`ml-5 list-circle`}>
                                     {
-                                        specials?.data?.map(data=> {
+                                        specialContext?.data?.map(data=> {
                                           
                                             if (ingredient.uuid === data.ingredientId){
                                                 return <li>{data?.title}</li>
