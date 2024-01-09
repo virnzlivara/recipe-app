@@ -18,17 +18,7 @@ const Modal = () => {
         // dispatch(clearSelectedRecipe())
         recipeContext.clearSelectedRecipe();
     }
-
-    useEffect(() => {
-        debugger;
-        if (withSelectedRecipe) {
-            document.body.style.overflow = 'hidden';
-        }
-        if (!withSelectedRecipe) {
-            document.body.style.overflow = 'unset';
-        }
-       
-     }, [withSelectedRecipe]);
+ 
      
     return ( 
         
