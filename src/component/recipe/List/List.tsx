@@ -1,5 +1,4 @@
 
-import { Key, useState } from 'react';
 import Item from '../Item/Item';
 import { IREcipeData, IRecipe } from '../../../features/recipe/recipeSlice';
 
@@ -7,10 +6,7 @@ import { IREcipeData, IRecipe } from '../../../features/recipe/recipeSlice';
 interface List {
   items: IRecipe;
 }
-
-interface Item  {
-  items: any
-}
+ 
 
 const RecipeList = ({items} : List) => { 
     return ( 

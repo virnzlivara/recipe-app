@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useSelector } from 'react-redux';
 import classnames from 'classnames';
 import './DetailedItem.css'; 
 const DetailedItem = ({item}) => { 
@@ -12,7 +12,7 @@ const DetailedItem = ({item}) => {
         "gap-5 mb-5": true
         })}>
             <div className='recipe-image w-1/3'> 
-            <img src={item.images.full} width={500} height={500}/> 
+            <img src={item.images.full} width={500} height={500} alt="recipe"/> 
             </div>
             <div className='w-2/3 grid'>
             <div>
