@@ -33,10 +33,5 @@ export const specialSlice = createSlice({
     }) 
   },
 }); 
-
-// export const {
-//   setSelectedpecial,
-//   clearSelectedspecial
-// } = specialSlice.actions;
-
+ 
 export default specialSlice;
