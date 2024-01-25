@@ -5,20 +5,44 @@ import App from './App';
 import reportWebVitals from './reportWebVitals'; 
 import { RecipeProvider } from './context/RecipeContext';
 import { SpecialProvider } from './context/SpecialContext';
-// import { Provider } from 'react-redux';
-// import { store } from "./app/store";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import HomePage from './page/home/home';
+import RecipePage from './page/recipes/recipe';
+import AboutPage from './page/about/about';
  
 
 const root = ReactDOM.createRoot(document.getElementById('root') as Element);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    children: [
+      {
+        path: "/",
+        element: <HomePage/>,
+      },
+      {
+        path: "/home",
+        element: <HomePage/>,
+      },
+      {
+        path: "/recipe",
+        element: <RecipePage/>,
+      },
+      {
+        path: "/about",
+        element: <AboutPage/>,
+      }
+    ]
+  }
+])
+
+
 root.render(
-  // <React.StrictMode> 
-  //   <Provider store={store}> 
-  //     <App /> 
-  // </Provider>
-  // </React.StrictMode>
   <RecipeProvider> 
     <SpecialProvider>
-      <App /> 
+      {/* <App />  */}
+      <RouterProvider router={router}/>
     </SpecialProvider>
   </RecipeProvider>
 );

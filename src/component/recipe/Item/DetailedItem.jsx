@@ -5,10 +5,8 @@ import './DetailedItem.css';
 import { useContext } from 'react';
 import SpecialContext from '../../../context/SpecialContext';
 const DetailedItem = ({item}) => { 
-    debugger;
-//   const specials = useSelector(state => state.special)
-    const specialContext = useContext(SpecialContext)
-//   console.log("Specials", specials)
+    debugger; 
+    const specialContext = useContext(SpecialContext) 
   return (  
     <div className='m-5'>
         <div className={classnames({

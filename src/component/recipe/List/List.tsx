@@ -1,6 +1,5 @@
 
-import Item from '../Item/Item';
-// import { IREcipeData, IRecipe } from '../../../features/recipe/recipeSlice';
+import Item from '../Item/Item'; 
 
 
 interface List {
@@ -34,7 +33,7 @@ const RecipeList = ({items} : List) => {
          
             {items && items?.data?.map((item: IREcipeData, index: number) => {
               return (
-                <Item key={item.uuid} item={item} index={index}></Item> 
+                <Item key={item.uuid} item={item} index={index}></Item>  
               );
             })}
         </ul>

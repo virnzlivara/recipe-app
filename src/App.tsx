@@ -1,27 +1,22 @@
  
-import { useContext, useEffect } from 'react';
-import './App.css'; 
+import { Outlet, createBrowserRouter } from 'react-router-dom';
+import './App.css';  
+import Modal from './component/modal/Modal';   
 import NavBar from './component/navbar/NavBar';
-import RecipeList from './component/recipe/List/List'; 
-import { getRecipes } from './features/recipe/recipeSlice';
-import Modal from './component/modal/Modal';
-import { getSpecials } from './features/specials/specialSlice';
-import { useAppDispatch, useAppSelector } from './app/hooks'; 
-import RecipeContext from './context/RecipeContext';
+import { Suspense } from 'react';
 
-function App() {  
-  // const recipeSelector = useAppSelector((state) => state.recipe)
-  // const dispatch = useAppDispatch()
-  
-  const recipe = useContext(RecipeContext)
+
+function App() {   
+ 
 
   return ( 
     <div className="App">
       <Modal/>
       <div className='topImage lg:height-80'></div> 
-      <NavBar/>
-      <RecipeList items={recipe} /> 
-      
+      <NavBar/> 
+      <Suspense fallback={<p>Loading Data...</p>}>
+       <Outlet/>
+      </Suspense>
       <footer className='mt-5 p-5 bg-slate-700 text-white font-bold'>Just Cook | The Best Recipe &copy;  2012 - 2022</footer>
     </div>
   );
