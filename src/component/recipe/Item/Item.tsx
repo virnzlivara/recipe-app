@@ -1,26 +1,21 @@
-import React, { Component, useContext } from 'react';
-import classnames from 'classnames';
-import RecipeContext from '../../../context/RecipeContext';
-// import { useDispatch } from 'react-redux';
-// import { setSelectedRecipe } from '../../../features/recipe/recipeSlice';
+ 
+import classnames from 'classnames'; 
+import { useAppDispatch } from '../../../app/hooks';
+import { setSelectedRecipe } from '../../../features/recipe/recipeSlice'; 
 
 const Item = ({item, index} : any) => {   
   const isEven = index%2 === 0;
-  // const dispatch = useDispatch();
-  const recipeContext = useContext(RecipeContext);
+  const dispatch = useAppDispatch(); 
   const viewRecipe = (item: any) => {
-      // dispatch(setSelectedRecipe(item))
-      debugger;
-      recipeContext.setSelected(item)
+      dispatch(setSelectedRecipe(item)) 
   }
-  
   return (  
     <li className={classnames({
       "lg:flex lg:mt-10 lg:gap-10": true,
       "lg:flex-row-reverse": !isEven
     })}>
         <div className='recipe-image lg:w-1/3'> 
-          <img src={item.images.full} /> 
+          <img src={item.images.full} alt='recipe' /> 
         </div>
         <div className='lg:w-2/3 lg:grid'>
           <div>

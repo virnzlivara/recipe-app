@@ -2,13 +2,14 @@
 // import { useSelector } from 'react-redux';
 import classnames from 'classnames';
 import './DetailedItem.css'; 
-import { useContext } from 'react';
-import SpecialContext from '../../../context/SpecialContext';
+// import { useContext } from 'react';
+// import SpecialContext from '../../../context/SpecialContext';
+import { useAppSelector } from '../../../app/hooks';
 const DetailedItem = ({item}) => { 
     debugger;
-//   const specials = useSelector(state => state.special)
-    const specialContext = useContext(SpecialContext)
-//   console.log("Specials", specials)
+  const specialContext = useAppSelector(state => state.special)
+    // const specialContext = useContext(SpecialContext)
+  console.log("Specials", specialContext)
   return (  
     <div className='m-5'>
         <div className={classnames({

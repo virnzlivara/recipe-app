@@ -50,7 +50,7 @@ export const recipeSlice = createSlice({
         selected: action.payload
       }
     }, 
-    clearSelectedRecipe(state, action: IPayloadAction<IREcipeData>) { 
+    clearSelectedRecipe(state) { 
       return {
         ...state,
         selected: null
