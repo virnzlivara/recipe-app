@@ -1,11 +1,12 @@
 
+import { useAppSelector } from '../../../app/hooks';
 import Item from '../Item/Item';
 // import { IREcipeData, IRecipe } from '../../../features/recipe/recipeSlice';
 
 
-interface List {
-  items: IRecipe;
-}
+// interface List {
+//   items: IRecipe;
+// }
 
 export interface IRecipe {
   data : IREcipeData[],
@@ -28,11 +29,12 @@ interface IImages {
  
 
 
-const RecipeList = ({items} : List) => { 
+const RecipeList = () => { 
+  const recipeSelector = useAppSelector((state) => state.recipe)  
       return ( 
         <ul className='lg:mt-10 lg:mx-28 m-5'>
          
-            {items && items?.data?.map((item: IREcipeData, index: number) => {
+            {recipeSelector && recipeSelector?.data?.map((item: IREcipeData, index: number) => {
               return (
                 <Item key={item.uuid} item={item} index={index}></Item> 
               );

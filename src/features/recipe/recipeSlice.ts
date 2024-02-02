@@ -7,12 +7,12 @@ export const getRecipes = createAsyncThunk(
   "getRecipes",
   async (args, thunkAPI) => { 
     try {
-      return await recipeService.getRecipes();
+      return await recipeService.getRecipes(); 
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
-);
+); 
 
 export interface IRecipe {
   data : IREcipeData[],
@@ -42,9 +42,9 @@ export const recipeSlice = createSlice({
   name: "recipe",
   initialState,
   reducers: {
-    
+// Look at the type field of the action object to see how it should respond
+// Update its state immutably, by making copies of the parts of the state that need to change and only modifying those copie
     setSelectedRecipe(state, action: IPayloadAction<IREcipeData>) {  
-      debugger
       return {
         ...state,
         selected: action.payload
@@ -57,30 +57,37 @@ export const recipeSlice = createSlice({
       }
     }
   },
-  extraReducers: (builder) => {
+  extraReducers: (builder) => { 
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(getRecipes.fulfilled, (state, action) => {  
-      debugger
+      
       return {
         ...state,
         data: action.payload
       }
       
-    }) 
+    })
+    .addCase(getRecipes.rejected, (state) => {  
+     
+      return {
+        ...state
+      }
+      
+    })
+    .addCase(getRecipes.pending, (state) => {  
+     
+      return {
+        ...state
+      }
+      
+    })
   },
 });
-
-// export const { 
-//   updateSelectedOrderDetails
-// } = recipeSlice.actions;
-
-// export default recipeSlice;
+  
 
 export const {
   setSelectedRecipe,
   clearSelectedRecipe
 } = recipeSlice.actions;
-
-
-export const selectRecipe = (state: RootState) => state.recipe
+ 
 export default recipeSlice;
